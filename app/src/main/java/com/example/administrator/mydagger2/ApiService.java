@@ -2,7 +2,8 @@ package com.example.administrator.mydagger2;
 
 import android.util.Log;
 
-import javax.inject.Inject;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by LiBing
@@ -12,18 +13,37 @@ import javax.inject.Inject;
 
 public class ApiService {
 
+    public static final MediaType JSON
+            = MediaType.parse("application/json; charset=utf-8");
 
-    public ApiService() {
-        Log.i("ApiService", "------------ApiService");
+    public OkHttpClient mOkHttpClient;
+
+    public ApiService(OkHttpClient okHttpClient) {
+        this.mOkHttpClient = okHttpClient;
     }
 
-    @Inject
-    public ApiService(String url) {
-        Log.i("ApiService", "------------"+url);
+    public void login(){
+        Log.i("login","------------"+mOkHttpClient);
     }
 
     public void register() {
+        Log.i("main","------------"+mOkHttpClient);
         //保存到服务器
-        Log.i("ApiService", "------------register");
+//        RequestBody body = RequestBody.create(JSON, "json内容");
+//        Request request = new Request.Builder()
+//                .url("www.baidu.com")
+//                .post(body)
+//                .build();
+//        mOkHttpClient.newCall(request).enqueue(new Callback() {
+//            @Override
+//            public void onFailure(Call call, IOException e) {
+//
+//            }
+//
+//            @Override
+//            public void onResponse(Call call, Response response) throws IOException {
+//
+//            }
+//        });
     }
 }

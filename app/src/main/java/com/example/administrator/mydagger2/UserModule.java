@@ -1,10 +1,12 @@
 package com.example.administrator.mydagger2;
 
 import android.content.Context;
-import android.util.Log;
+
+import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import okhttp3.OkHttpClient;
 
 /**
  * Created by LiBing
@@ -21,19 +23,19 @@ public class UserModule {
     }
 
     @Provides
-    public String provideUrl() {
-        return "ewufuewjfgqwejfwe";
+    @Singleton
+    public OkHttpClient provideOkHttpClient() {
+        return new OkHttpClient().newBuilder().build();
     }
 
     @Provides
-    public UserStore provideUserStore(){
-        Log.i("provideUserStore","-----------provideUserStore");
-        return new UserStore(this.mContext);
+    public ApiService provideApiService(OkHttpClient okHttpClient) {
+        return new ApiService(okHttpClient);
     }
 
     @Provides
-    public UserManager provideUserManager(ApiService service, UserStore store) {
-        return new UserManager(service, store);
+    public UserManager provideUserManager(ApiService service) {
+        return new UserManager(service);
     }
 
 }

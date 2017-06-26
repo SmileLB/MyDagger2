@@ -8,17 +8,18 @@ package com.example.administrator.mydagger2;
 
 public class UserManager {
 
-    private UserStore mStore;
     private ApiService mService;
 
-    public UserManager(ApiService service,UserStore store) {
-        mStore = store;
+    public UserManager(ApiService service) {
         mService = service;
+    }
+
+    public void login() {
+        mService.login();
     }
 
     //分别向服务端和本地保存用户数据
     public void register() {
-        mStore.register();
         mService.register();
     }
 }

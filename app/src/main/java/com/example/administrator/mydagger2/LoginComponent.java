@@ -6,13 +6,12 @@ import dagger.Component;
 
 /**
  * Created by LiBing
- * on 2017/6/21 0021
+ * on 2017/6/26 0026
  * describe:
  */
-
 @Singleton
-@Component(modules = {UserModule.class})
-public interface UserComponent {
+@Component(modules = UserModule.class)
+public interface LoginComponent {
 
-    void inject(MainActivity activity);
+    void inject(LoginActivity loginActivity);
 }

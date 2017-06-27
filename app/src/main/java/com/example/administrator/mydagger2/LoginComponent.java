@@ -1,6 +1,6 @@
 package com.example.administrator.mydagger2;
 
-import javax.inject.Singleton;
+import com.example.administrator.mydagger2.anotation.ActivityScope;
 
 import dagger.Component;
 
@@ -9,8 +9,8 @@ import dagger.Component;
  * on 2017/6/26 0026
  * describe:
  */
-@Singleton
-@Component(modules = UserModule.class)
+@ActivityScope
+@Component(modules = UserModule.class,dependencies = AppComponent.class)
 public interface LoginComponent {
 
     void inject(LoginActivity loginActivity);

@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.administrator.mydagger2.app.MyAppilication;
+
 import javax.inject.Inject;
 
 /**
@@ -21,7 +23,11 @@ public class LoginActivity extends AppCompatActivity{
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        DaggerLoginComponent.builder().userModule(new UserModule(this)).build().inject(this);
+        DaggerLoginComponent.builder()
+                .userModule(new UserModule(this))
+                .appComponent(((MyAppilication)getApplication()).getAppComponent())
+                .build()
+                .inject(this);
 
         mManager.login();
     }

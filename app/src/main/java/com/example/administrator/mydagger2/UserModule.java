@@ -2,8 +2,6 @@ package com.example.administrator.mydagger2;
 
 import android.content.Context;
 
-import javax.inject.Singleton;
-
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -20,12 +18,6 @@ public class UserModule {
 
     public UserModule(Context context) {
         mContext = context;
-    }
-
-    @Provides
-    @Singleton
-    public OkHttpClient provideOkHttpClient() {
-        return new OkHttpClient().newBuilder().build();
     }
 
     @Provides
